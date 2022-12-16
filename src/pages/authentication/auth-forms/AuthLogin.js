@@ -42,6 +42,9 @@ const AuthLogin = () => {
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
+    const handleSubmit = (event) => {
+        console.log('login');
+    };
 
     return (
         <>
@@ -56,9 +59,11 @@ const AuthLogin = () => {
                     password: Yup.string().max(255).required('Password is required')
                 })}
                 onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
+                    console.log(values);
                     try {
-                        setStatus({ success: false });
+                        setStatus({ success: true });
                         setSubmitting(false);
+                        window.location.href = window.location.origin + '/dashboard';
                     } catch (err) {
                         setStatus({ success: false });
                         setErrors({ submit: err.message });

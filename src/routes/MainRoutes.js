@@ -11,11 +11,13 @@ const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
 const SamplePage = Loadable(lazy(() => import('pages/extra-pages/SamplePage')));
 
 // render - utilities
+const Users = Loadable(lazy(() => import('pages/users')));
 const Typography = Loadable(lazy(() => import('pages/components-overview/Typography')));
 const Color = Loadable(lazy(() => import('pages/components-overview/Color')));
 const Shadow = Loadable(lazy(() => import('pages/components-overview/Shadow')));
 const AntIcons = Loadable(lazy(() => import('pages/components-overview/AntIcons')));
 
+const AuthLogin = Loadable(lazy(() => import('pages/authentication/Login')));
 // ==============================|| MAIN ROUTING ||============================== //
 
 const MainRoutes = {
@@ -24,7 +26,7 @@ const MainRoutes = {
     children: [
         {
             path: '/',
-            element: <DashboardDefault />
+            element: <AuthLogin />
         },
         {
             path: 'color',
@@ -32,12 +34,13 @@ const MainRoutes = {
         },
         {
             path: 'dashboard',
-            children: [
-                {
-                    path: 'default',
-                    element: <DashboardDefault />
-                }
-            ]
+            element: <DashboardDefault />
+            // children: [
+            //     {
+            //         path: 'default',
+            //         element: <DashboardDefault />
+            //     }
+            // ]
         },
         {
             path: 'sample-page',
@@ -46,6 +49,10 @@ const MainRoutes = {
         {
             path: 'shadow',
             element: <Shadow />
+        },
+        {
+            path: 'users',
+            element: <Users />
         },
         {
             path: 'typography',
